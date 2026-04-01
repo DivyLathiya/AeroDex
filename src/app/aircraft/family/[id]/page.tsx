@@ -38,7 +38,7 @@ export default async function FamilyPage({ params }: { params: Promise<{ id: str
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {family.variants.map((item) => (
+        {family.variants.map((item: any) => (
           <Link href={`/aircraft/${item.id}`} key={item.id} className="group flex flex-col bg-card border border-white/5 rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10">
             <div className="relative h-48 w-full bg-muted">
               {item.imageUrl ? (
