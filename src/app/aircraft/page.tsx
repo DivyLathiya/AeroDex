@@ -29,7 +29,7 @@ export default async function AircraftDirectory({
     }
   });
 
-  const totalVariants = families.reduce((acc, f) => acc + f.variants.length, 0);
+  const totalVariants = families.reduce((acc: number, f: any) => acc + f.variants.length, 0);
 
   return (
     <div className="container mx-auto px-4 py-12">
