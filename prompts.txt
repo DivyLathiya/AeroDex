@@ -1,0 +1,18 @@
+the images are not fetching and do one thing that in aircraft page add sub options of their family, like in aircraft main page their should be a320 family, dreamliner family, 777 family likewise  and in that family page their should be all aircrafts of that family
+
+A220-100, A319neo, A321neo, and A321XLR, A330-200, A330-300, A330-800, A330-900, A340-200, A340-300, A340-500, A340-600, A350-900, 
+
+B737-700, B737-800, B737-900, B737-1000, B747-400, B767-300, B767-400, B777-200LR, B777-200ER, B777-8, B777-9, B787-8, B787-10, 
+
+E175, E190, E195, E190-E2, C295, C390, A400M, C17, C5, C130, A330 MRTT, KC-46, KC-390, KC-130, KC-17, KC-5, KC-46, KC-390, KC-130, KC-17, KC-5, KC-46, KC-390, KC-130 
+
+A220-300, A320neo, A330-900neo,A350-1000,B787-9,B777-9,B777-300ER,
+
+A380-800 
+-----------------------------------------------------------------------------------------
+don't remove anything, only edit the things which i tell you
+
+1.don't give information which is same for all same family , upload the real and accurate dimensions, speed and crussing altitude etc., 
+3.remove settings icon from engine dialog box which is at top right corner in that dialog box
+4.give information like speed in kts and also in kmph and range in kms and nautical miles
+-----------------------------------------------------------------------------------------

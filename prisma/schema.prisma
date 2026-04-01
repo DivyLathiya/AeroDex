@@ -1,0 +1,66 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model AircraftFamily {
+  id             String    @id @default(uuid())
+  name           String    @unique // e.g. "A320 family", "737 family"
+  manufacturer   String    // "Airbus", "Boeing", "Embraer", "ATR"
+  type           String    // "Narrow-body", "Wide-body", "Regional"
+  description    String?
+  variants       Variant[]
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}
+
+model Variant {
+  id              String         @id @default(uuid())
+  name            String         // e.g. "A320neo", "737 MAX 8"
+  familyId        String
+  family          AircraftFamily @relation(fields: [familyId], references: [id])
+  firstFlightYear Int?
+  imageUrl        String?        // High-quality aircraft image URL
+  performance     Performance?
+  dimensions      Dimensions?
+  engines         Engine[]       // Many-to-many because generic engines can go on multiple variants, or 1-to-many. Let's do implicit m-n
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+}
+
+model Engine {
+  id             String    @id @default(uuid())
+  name           String    @unique // e.g. "LEAP-1B", "CFM56", "Rolls-Royce Trent XWB"
+  manufacturer   String    // e.g. "CFM International", "Rolls-Royce", "Pratt & Whitney"
+  thrustKn       Float?    // Thrust in kN
+  bypassRatio    Float?
+  fanDiameterM   Float?    // Fan diameter in meters
+  fuelEfficiency String?   // Fuel efficiency comparison/description
+  variants       Variant[] // Many-to-many with variants
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}
+
+model Performance {
+  id               String  @id @default(uuid())
+  variantId        String  @unique
+  variant          Variant @relation(fields: [variantId], references: [id])
+  cruiseSpeedKnots Float?
+  cruiseSpeedKmh   Float?
+  rangeKm          Float?
+  capacity         Int?    // Typical passenger capacity
+  cruisingAltitudeFt Int?  // Cruising altitude in feet
+}
+
+model Dimensions {
+  id        String  @id @default(uuid())
+  variantId String  @unique
+  variant   Variant @relation(fields: [variantId], references: [id])
+  lengthM   Float?
+  wingspanM Float?
+  heightM   Float?
+}
