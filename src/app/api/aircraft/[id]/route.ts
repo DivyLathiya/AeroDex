@@ -1,6 +1,13 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 
+export const dynamic = 'force-static';
+
+export async function generateStaticParams() {
+  const variants = await prisma.variant.findMany({ select: { id: true } });
+  return variants.map((variant) => ({ id: variant.id }));
+}
+
 export async function GET(
   request: Request,
   { params }: { params: Promise<{ id: string }> }

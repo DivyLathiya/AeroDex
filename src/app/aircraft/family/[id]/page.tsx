@@ -4,6 +4,10 @@ import prisma from '@/lib/prisma';
 import { Plane, Gauge, Ruler, ArrowLeft, ArrowUp, Users } from 'lucide-react';
 import { notFound } from 'next/navigation';
 
+export async function generateStaticParams() {
+  const families = await prisma.aircraftFamily.findMany({ select: { id: true } });
+  return families.map((family) => ({ id: family.id }));
+}
 export default async function FamilyPage({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = await params;
   

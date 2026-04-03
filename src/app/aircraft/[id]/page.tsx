@@ -5,6 +5,11 @@ import prisma from '@/lib/prisma';
 import ExplainButton from '@/components/ExplainButton';
 import { ArrowLeft, Calendar, Factory, Plane, Maximize, Gauge, Users, Wind } from 'lucide-react';
 
+export async function generateStaticParams() {
+  const variants = await prisma.variant.findMany({ select: { id: true } });
+  return variants.map((variant) => ({ id: variant.id }));
+}
+
 export default async function AircraftDetail({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = await params;
   const aircraft = await prisma.variant.findUnique({
