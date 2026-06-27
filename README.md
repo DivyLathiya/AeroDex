@@ -23,7 +23,7 @@ AeroDex is a comprehensive, modern web application for exploring and comparing c
 * **Styling:** [Tailwind CSS](https://tailwindcss.com/)
 * **Icons:** [Lucide React](https://lucide.dev/)
 
-## ⚙️ Steps To Run:
+## ⚙️ Steps To Run
 ### ✅ Prerequisites
 
 1. Node.js: Version 18.x or higher
